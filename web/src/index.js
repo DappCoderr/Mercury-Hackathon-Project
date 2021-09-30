@@ -1,18 +1,17 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Providers from './providers/Providers.comp';
-import Routes from './components/Routes.comp'
-import { ROUTES } from './config/routes.config';
-import "./config/config"
 import './index.css';
-import './components/Atoms.css'
-import Header from "../src/components/Header/Header"
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <Providers>
-    <Header/>
-    <Routes routes={ROUTES} />
-  </Providers>,
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
   document.getElementById('root')
 );
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
