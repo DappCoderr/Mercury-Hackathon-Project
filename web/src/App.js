@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 
 import Home from "./pages/Home/home";
 import PageWrapper from "./component/Pagewrapper/Page/page";
+import AppRoutes from "./appRoutes";
 
 import * as fcl from "@onflow/fcl";
 
@@ -17,7 +18,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <PageWrapper>
-          <Home />
+          <AppRoutes />
         </PageWrapper>
       </BrowserRouter>
     </Provider>
