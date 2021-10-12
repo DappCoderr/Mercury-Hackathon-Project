@@ -1,0 +1,26 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "api for cars-nft",
+  "main": "index.js",
+  "scripts": {
+    "test": "testapi"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@onflow/fcl": "^0.0.77",
+    "@onflow/types": "^0.0.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "dotenv-expand": "^5.1.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-validator": "^6.12.2",
+    "knex": "^0.95.11",
+    "objection": "github:Vincit/objection.js",
+    "pg": "^8.7.1",
+    "sha3": "^2.1.4",
+    "yargs": "^17.2.1"
+  }
+}
