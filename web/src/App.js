@@ -1,17 +1,18 @@
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import store from "./store";
 import { Provider } from "react-redux";
 
-import Home from "./pages/Home/home";
 import PageWrapper from "./component/Pagewrapper/Page/page";
 import AppRoutes from "./appRoutes";
 
 import * as fcl from "@onflow/fcl";
 
+console.log("ENV", process.env);
+
 fcl
   .config()
-  .put("accessNode.api", "https://access-testnet.onflow.org")
-  .put("challenge.handshake", "https://fcl-discovery.onflow.org/testnet/authn");
+  .put("accessNode.api", process.env.REACT_APP_ACCESS_NODE_API)
+  .put("challenge.handshake", process.env.REACT_APP_CHALLENGE_HANDSHAKE);
 
 function App() {
   return (

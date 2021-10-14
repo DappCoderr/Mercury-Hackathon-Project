@@ -1,7 +1,7 @@
 import { BaseModel } from "./base";
 
 class Users extends BaseModel {
-  address!;
+  address;
   static get tableName() {
     return "users";
   }

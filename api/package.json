@@ -1,18 +1,21 @@
 {
   "name": "api",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "api for cars-nft",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "testapi"
+    "start": "nodemon -r dotenv/config  src/index.js --exec babel-node",
+    "start-build": "nodemon -r dotenv/config  build/index.js",
+    "build": "babel src/ -d build/"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/runtime": "^7.15.4",
     "@onflow/fcl": "^0.0.77",
     "@onflow/types": "^0.0.5",
+    "b": "^2.0.1",
     "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
@@ -25,6 +28,17 @@
     "yargs": "^17.2.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/node": "^7.15.8",
+    "@babel/plugin-transform-runtime": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.13",
     "path": "^0.12.7"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }

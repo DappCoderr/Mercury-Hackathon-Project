@@ -24,6 +24,17 @@ const Header = ({ props }) => {
   const subscribeToUser = () => {
     fcl.currentUser().subscribe(user => {
       if (user?.loggedIn) {
+        fetch(`/v1/users`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ address: user.addr })
+        })
+          .then(response => console.log("Response USer", response))
+          .catch(e => {
+            console.error("Error", e);
+          });
         dispatch(createSession(user));
       } else {
         dispatch(expireSession());
@@ -37,7 +48,6 @@ const Header = ({ props }) => {
 
   const [showPopup, setshowPopup] = useState(false);
   const location = useLocation();
-  const onConnectedClick = () => {};
 
   return (
     <div className="top-header">

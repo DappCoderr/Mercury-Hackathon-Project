@@ -42,7 +42,7 @@ store.subscribe(
     console.log("STATE_LENGTH", store.getState());
     // save state in local storage
     saveState({
-      Session: store.getState().Session,
+      Session: store.getState().Session
       // Query: store.getState().Query
     });
   }, 1000)

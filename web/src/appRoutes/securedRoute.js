@@ -28,14 +28,6 @@ const SecuredRoute = ({ component: Component, ...rest }) => {
 
   console.log("Authenticated", authenticated);
 
-  const authenticateUserBeforeNavigation = async () => {
-    try {
-      await fcl.logIn();
-    } catch (e) {
-      console.error("coulnt authenticate");
-    }
-  };
-
   if (authenticated) {
     return <Route {...rest} render={props => <Component {...props} />} />;
   } else {

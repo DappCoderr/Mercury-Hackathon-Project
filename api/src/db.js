@@ -2,14 +2,14 @@ import { knex } from "knex";
 const path = require("path");
 
 const { Model } = require("objection");
+import config from "./config";
 
-const initDB = config => {
+const initDB = () => {
   const knexInstance = knex({
     client: "postgresql",
     connection: {
-      host: "localhost",
-      user: "postgres",
-      database: "mercury-hackathon"
+      connectionString: config.databaseUrl,
+      sslmode: config.envMode === "production" ? "require" : "disable"
     },
     pool: {
       min: 2,
