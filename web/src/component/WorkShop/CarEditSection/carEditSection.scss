@@ -1,0 +1,95 @@
+
+    .workshop {
+        display: grid;
+        grid-template-columns: 60vw 30vw;
+        gap: 25px;
+        // overflow-y:scroll;
+    }
+
+
+    .carParts {
+        width: 100%;
+        // height: 100%;
+    }
+
+
+    .car-preview {
+        width: 100%;
+    }
+
+    .preview-box {
+        border-radius: 80px;
+        border: 20px solid #000;
+        padding: 20px;
+        height: 90%;
+        position: relative;
+        opacity: 1;
+    }
+
+    .preview-stats {
+        position: absolute;
+        left: 10%;
+        bottom: -80px;
+    }
+
+    .preview-stats ul {
+        display: flex;
+    }
+
+    .preview-stats li {
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+        border: 10px solid #707070;
+        background-color: #fff;
+        margin: 10px;
+    }
+
+    .tab {
+        position: relative;
+        display: block;
+    }
+
+    .tab-links {
+        display: flex;
+        justify-content: center;
+        margin-bottom: -25px;
+    }
+
+    .tab-link {
+        color: #7d7d7d;
+        border-bottom: 5px solid #7d7d7d;
+        padding: 0px 20px;
+        margin: 0px 5px 5px 5px;
+    }
+
+    .tab-link.active {
+        margin-bottom: 0px;
+        color: var(--secondary);
+        border-bottom: 10px solid var(--secondary);
+    }
+
+    .tab-body {
+        display: block;
+        z-index: 1;
+        position: relative;
+        background-color: #cccccc;
+        border-radius: 20px;
+        padding: 20px 0px;
+        // height: 100%;
+    }
+
+
+ .actions {
+        text-align: center;
+    }
+
+    
+.car-parts .actions .save{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+

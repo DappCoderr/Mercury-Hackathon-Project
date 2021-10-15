@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31" height="27.256" viewBox="0 0 31 27.256">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.491" y1="1.068" x2="0.507" y2="-0.366" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.831"/>
+    </linearGradient>
+  </defs>
+  <g id="HEART" transform="translate(0.5 0.504)">
+    <path id="Path_108" data-name="Path 108" d="M2.4,3.289C5.064.829,9.217.056,12.251,2.442l.14.107a4.309,4.309,0,0,0,5.218,0l.14-.107C20.782.056,24.936.829,27.6,3.289a7.759,7.759,0,0,1,.031,11.2S15.256,27.25,15,27.25,2.375,14.49,2.375,14.49A7.758,7.758,0,0,1,2.4,3.289Z" transform="translate(0 -0.998)" fill="#c60808" stroke="#707070" stroke-width="1"/>
+    <path id="Path_109" data-name="Path 109" d="M14.553,14.318C20.384,6.723,27.64,11.342,25,15.165L14.846,30.72a.639.639,0,0,1-1.149,0L4.726,17.908C2.083,14.084,10.046,20.188,14.553,14.318Z" transform="translate(1.05 -7.44)" opacity="0.7" fill="url(#linear-gradient)" style="mix-blend-mode: multiply;isolation: isolate"/>
+  </g>
+</svg>

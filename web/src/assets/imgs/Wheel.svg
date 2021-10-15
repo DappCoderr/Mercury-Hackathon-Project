@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="330.986 120.756 99.5 99.5" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#272725"/>
+      <stop offset="0.346" stop-color="#2b2b29"/>
+      <stop offset="0.409" stop-color="#494948"/>
+      <stop offset="0.466" stop-color="#5e5e5e"/>
+      <stop offset="0.503" stop-color="#666"/>
+      <stop offset="0.925" stop-color="#b3b3b3"/>
+      <stop offset="0.992" stop-color="#ccc"/>
+    </radialGradient>
+  </defs>
+  <circle id="Ellipse_27" data-name="Ellipse 27" cx="380.736" cy="170.506" r="49.75" fill="#b3b3b3"/>
+  <circle id="Ellipse_28" data-name="Ellipse 28" cx="380.736" cy="170.506" r="48.195" fill="#ccc" stroke="#707070" stroke-width="1"/>
+  <circle id="Ellipse_29" data-name="Ellipse 29" cx="380.736" cy="170.506" r="43.781" fill="url(#radial-gradient)"/>
+  <circle id="Ellipse_30" data-name="Ellipse 30" cx="380.736" cy="170.506" r="38.466" fill="none"/>
+  <path id="Path_12" data-name="Path 12" d="M 406.818 197.842 L 391.842 178.234 C 392.773 176.926 393.46 175.461 393.867 173.908 L 418.508 171.392 L 394.108 168.124 C 393.818 166.543 393.242 165.028 392.408 163.655 L 408.076 144.424 L 388.397 159.455 C 387.106 158.592 385.673 157.965 384.165 157.6 L 381.627 132.734 L 378.31 157.508 C 376.867 157.809 375.486 158.35 374.223 159.108 L 354.659 143.168 L 369.95 163.188 C 369.169 164.371 368.583 165.671 368.215 167.04 L 342.969 169.617 L 367.969 172.965 C 368.233 174.359 368.721 175.701 369.413 176.94 L 353.407 196.586 L 373.352 181.351 C 374.553 182.2 375.888 182.842 377.302 183.251 L 379.856 208.272 L 383.156 183.616 C 384.685 183.37 386.159 182.858 387.51 182.101 Z" fill="#b3b3b3"/>
+  <circle id="Ellipse_1" data-name="Ellipse 1" cx="380.736" cy="170.506" r="11.781" fill="#999"/>
+  <circle id="Ellipse_1-2" data-name="Ellipse 1" cx="380.736" cy="170.506" r="8.707" fill="#b3b3b3"/>
+  <rect id="Rectangle_1" data-name="Rectangle 1" width="21" height="3" transform="matrix(0.999877, 0.01569, -0.01569, 0.999877, 370.260562, 168.840669)" fill="#999"/>
+  <rect id="Rectangle_2" data-name="Rectangle 2" width="21" height="3" transform="matrix(-0.01569, 0.999877, -0.999877, -0.01569, 382.400516, 160.030671)" fill="#999"/>
+  <circle id="Ellipse_31" data-name="Ellipse 31" cx="380.736" cy="170.506" r="4" fill="#b3b3b3"/>
+</svg>

@@ -37,7 +37,7 @@ const Header = ({ props }) => {
 
   const [showPopup, setshowPopup] = useState(false);
   const location = useLocation();
-  const onConnectedClick = () => {};
+  const onConnectedClick = () => { };
 
   return (
     <div className="top-header">
@@ -98,7 +98,7 @@ const Header = ({ props }) => {
           </button>
         )}
         {showPopup ? (
-          <div class="popup">
+          <div className="popup">
             <span> Wallet Address</span>
             <div className="addr"> {currentUser?.addr} </div>
           </div>

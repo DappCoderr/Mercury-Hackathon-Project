@@ -1,0 +1,55 @@
+
+    .main-header {
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--secondary);
+        padding: 20px 20px 0px 20px;
+        align-items: flex-start;
+        height: 120px;
+        width: 100%;
+    }
+
+    .brand-logo {
+        font-size: 60px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .main-nav {
+        align-self: flex-end;
+    }
+
+    .main-nav .nav-links {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 0px;
+    }
+
+    .main-nav .nav-link {
+        font-size: 30px;
+        color: #fff;
+        width: 200px;
+        text-align: center;
+    }
+
+    .main-nav .nav-link.active {
+        border-bottom: 10px solid #fff;
+    }
+
+    .main-header .user-info {
+        display: flex;
+        width: 300px;
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 10px;
+    }
+
+    .main-header h2 {
+        font-size: 16px;
+        margin: 0px;
+    }
+
+    .main-header h3 {
+        font-size: 20px;
+        margin: 0px;
+    }

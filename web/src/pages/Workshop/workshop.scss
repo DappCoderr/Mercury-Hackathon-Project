@@ -1,11 +1,49 @@
 .workshop-page {
+position: relative;
   width: 100vw;
-  height: 100vh;
-  overflow: auto;
-  color: white;
+  height: 100%;
+  // overflow: auto;
+  background-color: #fff;
+  z-index: 9999999;
 
-  .content {
+  .container {
+    margin: 0px 50px;
     height: 100%;
-    padding-top: 100px;
   }
+    .content {
+      height: 100%;
+      padding-top: 100px;
+    }
+
+
+      li {
+          list-style-type: none;
+      }
+
+      ::-webkit-scrollbar {
+          width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+          background: #f1f1f1;
+      }
+
+      ::-webkit-scrollbar-thumb {
+          background: var(--secondary);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+          background: var(--secondary);
+      }
+
+      *:focus {
+          outline: 0 !important;
+      }
+
+  
+#carSection1{
+    
+    margin: 150px 0px 20px 0px;
+}
+
 }
