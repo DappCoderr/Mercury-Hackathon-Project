@@ -1,0 +1,20 @@
+{
+  "name": "mercury-hackathon-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node api/dist/index.js",
+    "start:worker": "node api/dist/index.js --worker"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DappCoderr/Mercury-Hackathon-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DappCoderr/Mercury-Hackathon-Project/issues"
+  },
+  "homepage": "https://github.com/DappCoderr/Mercury-Hackathon-Project#readme"
+}

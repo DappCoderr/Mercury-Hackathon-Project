@@ -1,14 +1,13 @@
 import { Model } from "objection";
-import { v4 as uuidv4 } from 'uuid';
-
+import { v4 as uuidv4 } from "uuid";
 
 class BaseModel extends Model {
-  id!;
-  updated_at!;
-  created_at!;
+  id;
+  updated_at;
+  created_at;
 
   $beforeInsert() {
-    // this.id = uuidv4();
+    this.id = uuidv4();
     this.created_at = new Date();
   }
 
