@@ -8,6 +8,9 @@ import Part2 from "../../../assets/imgs/AXLE.svg"
 import RaceImage from "../../../assets/imgs/RAce button.svg"
 import HeartImage from "../../../assets/imgs/HEART.svg"
 import { Swiper, SwiperSlide } from "swiper/react";
+import CircleContainer from '../Indicators/circleContainer'
+import Gauge from '../Indicators/Gauge/gauge'
+import Counter from '../Indicators/Counter/counter'
 
 
 const CarEditSection = () => {
@@ -46,12 +49,7 @@ const CarEditSection = () => {
                                     return (
                                         <>
                                             <SwiperSlide key={index} style={{ height: "100%", overflow: "hidden" }} >
-
-
-
                                                 <img width="90%" src={Car} alt="car" />
-
-
                                             </SwiperSlide>
                                         </>
                                     );
@@ -64,19 +62,11 @@ const CarEditSection = () => {
                         <div className="preview-stats">
                             <h2>Vital stats</h2>
                             <ul>
-
-                                <li>
-                                    155 mph
-                                    <span>Top speed</span>
-                                </li>
-                                <li>
-                                    30m/s<sup>2</sup>
-                                    <span>Acceleration</span>
-                                </li>
-                                <li>
-                                    30m/s<sup>2</sup>
-                                    <span>Braking</span>
-                                </li>
+                                <Counter property="Top speed" topTextColor="#FD0000" topText="155" bottomText="mph" />
+                                <CircleContainer property="Acceleration">
+                                    <Gauge />
+                                </CircleContainer>
+                                <Counter property="Braking" topTextColor="#524B4B" topText="26" bottomText="/100" />
                             </ul>
                         </div>
 

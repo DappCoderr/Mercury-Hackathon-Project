@@ -3,6 +3,9 @@ import React from 'react'
 import "./multiCarSlider.scss"
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import CircleContainer from '../Indicators/circleContainer';
+import Gauge from '../Indicators/Gauge/gauge';
+import Counter from '../Indicators/Counter/counter';
 
 
 const MultiCarSlider = ({ title, items }) => {
@@ -21,19 +24,11 @@ const MultiCarSlider = ({ title, items }) => {
                                             <img src={item.image} alt="car" />
                                             <div className="preview-stats">
                                                 <ul>
-
-                                                    <li>
-                                                        155 mph
-                                                        <span>Top speed</span>
-                                                    </li>
-                                                    <li>
-                                                        30m/s<sup>2</sup>
-                                                        <span>Acceleration</span>
-                                                    </li>
-                                                    <li>
-                                                        30m/s<sup>2</sup>
-                                                        <span>Braking</span>
-                                                    </li>
+                                                    <Counter topTextColor="#FD0000" topText="155" bottomText="mph" />
+                                                    <CircleContainer >
+                                                        <Gauge />
+                                                    </CircleContainer>
+                                                    <Counter topTextColor="#524B4B" topText="26" bottomText="/100" />
                                                 </ul>
                                             </div>
                                         </div>

@@ -3,6 +3,7 @@ import React from 'react'
 //css import
 import "./workshopHeader.scss"
 import MainLogo from "../../../assets/imgs/MASTER  LOGO.svg"
+import ProfileImage from "../../../assets/imgs/profile.svg"
 
 const WorkShopHeader = () => {
     return (
@@ -16,7 +17,7 @@ const WorkShopHeader = () => {
                 </ul>
             </nav>
             <div className="user-info">
-                <div className="profile-image">Profile image</div>
+                <div className="profile-image"> <img width="50px" src={ProfileImage} alt="profile" /> </div>
                 <div className="user-data">
                     <h2>Olakunle Abiola</h2>
                     <h3>$500</h3>
