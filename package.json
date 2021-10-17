@@ -7,8 +7,6 @@
     "node": "14.x"
   },
   "scripts": {
-    "start-frontend": "cd web && npm start",
-    "start-backend": "cd api && npm run dev",
     "start": "npx lerna exec npm start",
     "postbuild": "cd ",
     "start:worker": "node api/dist/index.js --worker",

@@ -1,6 +1,13 @@
 exports.up = function (knex) {
   return knex.schema.table("packs", table => {
-    table.specificType("nfts", "jsonb[]").alter();
+    return knex.schema.hasColumn("packs", "nfts").then(exists => {
+      if (!exists) {
+        table.specificType("nfts", "jsonb[]");
+      } else {
+        table.dropColumn("nfts");
+        table.specificType("nfts", "jsonb[]");
+      }
+    });
   });
 };
 
