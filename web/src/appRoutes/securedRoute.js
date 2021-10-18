@@ -31,20 +31,23 @@ const SecuredRoute = ({ component: Component, ...rest }) => {
   if (authenticated) {
     return <Route {...rest} render={props => <Component {...props} />} />;
   } else {
-    // fcl.logIn();
+    fcl.logIn();
     return (
       <Route
         {...rest}
-        render={props => (
-          <Redirect
-            to={{
-              pathname: "/",
-              state: {
-                from: props.location
-              }
-            }}
-          />
-        )}
+        render={props => {
+          console.log("Ptops", props);
+          return (
+            <Redirect
+              to={{
+                pathname: "/",
+                state: {
+                  from: props.location
+                }
+              }}
+            />
+          );
+        }}
       />
     );
   }

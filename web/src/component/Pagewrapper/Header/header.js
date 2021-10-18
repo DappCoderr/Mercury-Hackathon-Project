@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, Link, useHistory } from "react-router-dom";
 
@@ -7,8 +7,8 @@ import * as fcl from "@onflow/fcl";
 
 /** Actions */
 import {
-  createSession,
-  expireSession
+  expireSession,
+  checkUserStatus
 } from "../../../reduxReducers/sessionReducer";
 
 /** CSS */
@@ -18,39 +18,58 @@ import cn from "classnames";
 const Header = ({ props }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
 
   const currentUser = useSelector(state => state.Session).user;
 
-  const subscribeToUser = () => {
+  const subscribeToUser = useCallback(() => {
     fcl.currentUser().subscribe(user => {
       if (user?.loggedIn) {
-        fetch(`/v1/users`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ address: user.addr })
-        })
-          .then(response => console.log("Response USer", response))
-          .catch(e => {
-            console.error("Error", e);
-          });
-        dispatch(createSession(user));
+        console.log("Location", location);
+        const toPath = location?.state?.from?.pathname;
+        history.push(toPath ?? "/");
+        dispatch(checkUserStatus(user));
       } else {
         dispatch(expireSession());
       }
     });
-  };
+  }, [dispatch]);
+
+  const [scrolled, setScrolled] = useState(false);
+
+  const onScroll = useCallback(
+    e => {
+      console.log("Scroll", e);
+      const scrollTop = e?.srcElement?.scrollTop;
+      if (scrollTop > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    },
+    [setScrolled]
+  );
 
   useEffect(() => {
     subscribeToUser();
-  }, []);
+  }, [subscribeToUser]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll, { capture: true });
+    return () => {
+      document.removeEventListener("scroll", onScroll, false);
+    };
+  }, [onScroll]);
 
   const [showPopup, setshowPopup] = useState(false);
-  const location = useLocation();
 
   return (
-    <div className="top-header">
+    <div
+      className={cn({
+        "top-header": !scrolled,
+        "top-header-solid": scrolled
+      })}
+    >
       <span className="left-menu"> Car NFT</span>
       <div className="right-menu">
         <div className="menu">
@@ -63,6 +82,16 @@ const Header = ({ props }) => {
             })}
           >
             Home
+          </Link>
+          <Link
+            to="/"
+            active
+            className={cn({
+              "menu-item-active": location.pathname === "/fetaures",
+              "menu-item": location.pathname !== "/features"
+            })}
+          >
+            Features
           </Link>
           <Link
             to="/workshop"
@@ -111,6 +140,10 @@ const Header = ({ props }) => {
           <div class="popup">
             <span> Wallet Address</span>
             <div className="addr"> {currentUser?.addr} </div>
+            <div className="bal">
+              Wallet Balance:
+              {`${parseFloat(currentUser?.fusdBal ?? 0).toFixed(4)} FUSD`}
+            </div>
           </div>
         ) : null}
       </div>

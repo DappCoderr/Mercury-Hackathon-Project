@@ -5,7 +5,7 @@
   height: 100vh;
   overflow: auto;
   position: relative;
-  background: black;
+  background: transparent;
 
   .header {
     position: fixed;
@@ -16,5 +16,6 @@
 
   .content {
     // padding-top: $headerHeight;
+    background: transparent;
   }
 }

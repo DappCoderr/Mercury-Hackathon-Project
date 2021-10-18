@@ -9,17 +9,18 @@ import cors from "cors";
 import { json, urlencoded } from "body-parser";
 
 import initUsersRouter from "./routes/users";
+import initPacksRouter from "./routes/packs";
 
 const V1 = "/v1/";
 
-const initApp = usersService => {
+const initApp = (usersService, packsService) => {
   const app = express();
 
   app.use(cors());
   app.use(json());
   app.use(urlencoded({ extended: false }));
   app.use(V1, initUsersRouter(usersService));
-  //   app.use(V1, initKibblesRouter(kibblesService));
+  app.use(V1, initPacksRouter(packsService));
   //   app.use(V1, initKittyItemsRouter(kittyItemsService));
   //   app.use(V1, initStorefrontRouter(storefrontService));
 

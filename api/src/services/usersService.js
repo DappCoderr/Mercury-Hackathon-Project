@@ -2,7 +2,6 @@ import { Users } from "../models/users";
 
 class UsersService {
   findOrCreateNewUser = async address => {
-    console.log("User Address", address);
     if (address) {
       let user = await Users.query().findOne({ address });
       if (!user) {
@@ -12,7 +11,7 @@ class UsersService {
       }
       return user;
     }
-    return null;
+    throw "Can't create User Entry without Address";
   };
 }
 

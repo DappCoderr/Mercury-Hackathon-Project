@@ -1,5 +1,6 @@
 import { BaseModel } from "./base";
 import { Users } from "./users";
+const { Model } = require("objection");
 
 class Races extends BaseModel {
   user_id_1;

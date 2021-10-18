@@ -3,6 +3,7 @@ import initApp from "./app";
 import initDB from "./db";
 
 import UsersService from "./services/usersService";
+import PacksService from "./services/packsService";
 
 async function run() {
   // const config = getConfig(envVars);
@@ -23,8 +24,9 @@ async function run() {
     console.log("Starting API server ....");
 
     const usersService = new UsersService();
+    const packsService = new PacksService();
 
-    const app = initApp(usersService);
+    const app = initApp(usersService, packsService);
 
     app.listen(config.port, () => {
       console.log(`Listening on port ${config.port}!`);

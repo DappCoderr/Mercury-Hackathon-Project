@@ -1,6 +1,7 @@
 import { BaseModel } from "./base";
 import { Users } from "./users";
 import { Packs } from "./packs";
+const { Model } = require("objection");
 
 class Orders extends BaseModel {
   user_id;

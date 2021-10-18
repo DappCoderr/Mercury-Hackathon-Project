@@ -1,0 +1,88 @@
+.pack-base-card,
+.pack-base-card-sold {
+  width: 325px;
+  height: 435px;
+  padding: 16px;
+  background: #a20707 0% 0% no-repeat padding-box;
+  border-radius: 43px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .pack-card,
+  .pack-card-sold {
+    height: 360px;
+    border-radius: 43px;
+    width: 257px;
+    background: transparent
+      linear-gradient(180deg, #bc0404 0%, #e50c0c 27%, #5e0202 100%) 0% 0%
+      no-repeat padding-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+
+    img {
+      height: 28px;
+      width: auto;
+    }
+
+    img.sold-out {
+      width: 200px;
+      height: auto;
+    }
+
+    .title {
+      color: white;
+      font-size: 32px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .content {
+      color: white;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .nft-details {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      span {
+        font-size: 14px;
+        text-transform: uppercase;
+        margin-top: 5px;
+      }
+      span:first-child {
+        font-weight: 550;
+      }
+    }
+
+    button {
+      width: 184px;
+      height: 51px;
+      background: #ffffff 0% 0% no-repeat padding-box;
+      border: 1px solid #707070;
+      border-radius: 26px;
+      opacity: 1;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  }
+
+  .pack-card {
+    opacity: 1;
+  }
+
+  .pack-card-sold {
+    opacity: 0.5;
+  }
+}

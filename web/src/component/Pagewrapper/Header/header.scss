@@ -1,13 +1,13 @@
 $headerHeight: 80px;
 
-.top-header {
-  width: 100%;
+.top-header,
+.top-header-solid {
+  width: calc(100% - 15px);
   height: $headerHeight;
   // background: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(1, 1, 1, 0.5);
 
   .left-menu {
     color: white;
@@ -28,7 +28,7 @@ $headerHeight: 80px;
     .menu {
       font-size: 18px;
       display: grid;
-      grid-template-columns: 150px 150px 150px;
+      grid-template-columns: 150px 150px 150px 150px;
       gap: 5px;
 
       .menu-item {
@@ -36,14 +36,14 @@ $headerHeight: 80px;
         text-decoration: underline;
         width: 100%;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
       }
       .menu-item-active {
-        color: red;
+        color: #ab3c3c;
         text-decoration: underline;
         width: 100%;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
       }
     }
 
@@ -66,7 +66,7 @@ $headerHeight: 80px;
       width: 200px;
       border: 1px solid #fff;
       border-radius: 10px;
-      height: 60px;
+      height: 80px;
       background: rgba(255, 255, 255, 1);
       padding: 20px;
       box-shadow: 5px 5px 2px 1px rgba(255, 255, 255, 0.2);
@@ -82,6 +82,10 @@ $headerHeight: 80px;
         font-size: 12px;
         margin-top: 8px;
       }
+      .bal {
+        font-size: 14px;
+        margin-top: 10px;
+      }
       button {
         width: 100%;
         border: 1px solid grey;
@@ -94,4 +98,12 @@ $headerHeight: 80px;
       }
     }
   }
+}
+
+.top-header-solid {
+  background: black;
+}
+
+.top-header {
+  background: rgba(1, 1, 1, 0.5);
 }
