@@ -9,7 +9,8 @@ const initDB = () => {
     client: "postgresql",
     connection: {
       connectionString: config.databaseUrl,
-      sslmode: config.envMode === "production" ? "require" : "disable"
+      ssl:
+        config.envMode === "production" ? { rejectUnauthorized: false } : false
     },
     pool: {
       min: 2,
@@ -18,6 +19,9 @@ const initDB = () => {
     acquireConnectionTimeout: 10000,
     migrations: {
       directory: path.join(__dirname, "migrations")
+    },
+    seeds: {
+      directory: path.join(__dirname, "seeds")
     }
   });
 

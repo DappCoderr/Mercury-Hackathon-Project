@@ -17,6 +17,7 @@ async function run() {
 
   // Run all database migrations
   await db.migrate.latest();
+  await db.seed.run();
 
   const startAPIServer = () => {
     console.log("Starting API server ....");
