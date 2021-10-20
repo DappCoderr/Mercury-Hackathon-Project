@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, Link, useHistory } from "react-router-dom";
 
@@ -25,9 +25,6 @@ const Header = ({ props }) => {
   const subscribeToUser = useCallback(() => {
     fcl.currentUser().subscribe(user => {
       if (user?.loggedIn) {
-        console.log("Location", location);
-        const toPath = location?.state?.from?.pathname;
-        history.push(toPath ?? "/");
         dispatch(checkUserStatus(user));
       } else {
         dispatch(expireSession());
@@ -35,19 +32,19 @@ const Header = ({ props }) => {
     });
   }, [dispatch]);
 
-  const [scrolled, setScrolled] = useState(false);
+  const scrolled = useRef(false);
 
   const onScroll = useCallback(
     e => {
       console.log("Scroll", e);
       const scrollTop = e?.srcElement?.scrollTop;
       if (scrollTop > 20) {
-        setScrolled(true);
+        scrolled.current = true;
       } else {
-        setScrolled(false);
+        scrolled.current = false;
       }
     },
-    [setScrolled]
+    [scrolled]
   );
 
   useEffect(() => {
@@ -66,8 +63,8 @@ const Header = ({ props }) => {
   return (
     <div
       className={cn({
-        "top-header": !scrolled,
-        "top-header-solid": scrolled
+        "top-header": !scrolled.current,
+        "top-header-solid": scrolled.current
       })}
     >
       <span className="left-menu"> Car NFT</span>

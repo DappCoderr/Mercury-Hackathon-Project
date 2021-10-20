@@ -1,4 +1,3 @@
-import PackCard from "../../../web/src/component/Home/PackCard/packCard";
 import { Packs } from "../models/packs";
 
 class PacksService {
@@ -19,6 +18,7 @@ class PacksService {
         sold: true,
         owner_id: ownerId
       });
+      return updatedPack;
     }
     throw "Pack Not Found";
   };

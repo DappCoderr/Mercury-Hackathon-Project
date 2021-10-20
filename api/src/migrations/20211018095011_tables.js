@@ -44,11 +44,21 @@ exports.up = function (knex, Promise) {
         .onDelete("cascade");
       table.timestamp("created_at").defaultTo(knex.fn.now());
       table.timestamp("updated_at").defaultTo(knex.fn.now());
+    })
+    .createTable("transactions", function (table) {
+      table.uuid("id").primary();
+      table.uuid("user_id").notNullable();
+      table.foreign("user_id").references("users.id").onDelete("CASCADE");
+      table.string("transaction_id").notNullable();
+      table.int("transaction_status").notNullable();
+      table.timestamp("created_at").defaultTo(knex.fn.now());
+      table.timestamp("updated_at").defaultTo(knex.fn.now());
     });
 };
 
 exports.down = function (knex, Promise) {
   return knex.schema
+    .dropTable("transactions")
     .dropTable("races")
     .dropTable("orders")
     .dropTable("packs")

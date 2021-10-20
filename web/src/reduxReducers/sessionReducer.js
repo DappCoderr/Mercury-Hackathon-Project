@@ -1,5 +1,7 @@
 /* @flow */
 import { GET_FUSD_BALANCE } from "../flow/get-fusd-balance.script";
+import { CHECK_COLLECTION } from "../flow/check-collection.script";
+
 import { query } from "@onflow/fcl";
 
 export const SESSION = Object.freeze({
@@ -12,16 +14,47 @@ export const INITIAL_STATE = {
 };
 
 const getFUSDBalance = userAddr => {
-  return async dispatch => {
+  return async () => {
     try {
-      let response = await query({
+      let fusdBal = await query({
         cadence: GET_FUSD_BALANCE,
         args: (arg, t) => [arg(userAddr, t.Address)]
       });
-      console.log("Response", response);
-      return response;
+      return fusdBal;
     } catch (err) {
-      console.log(err);
+      throw err;
+    }
+  };
+};
+
+const getUserCollection = userAddr => {
+  return async () => {
+    try {
+      let collection = await query({
+        cadence: CHECK_COLLECTION,
+        args: (arg, t) => [arg(userAddr, t.Address)]
+      });
+      console.log("Collection Here", collection);
+      return collection;
+    } catch (err) {
+      console.error("Error collect", err);
+      // throw err;
+    }
+  };
+};
+
+const createUserCollection = userAddr => {
+  return async () => {
+    try {
+      let collection = await query({
+        cadence: CHECK_COLLECTION,
+        args: (arg, t) => [arg(userAddr, t.Address)]
+      });
+      console.log("Collection Here", collection);
+      return collection;
+    } catch (err) {
+      console.error("Error collect", err);
+      // throw err;
     }
   };
 };
@@ -29,6 +62,7 @@ const getFUSDBalance = userAddr => {
 export const checkUserStatus = user => {
   return async (dispatch, getState) => {
     const stateUserId = getState()?.Session?.user?.id ?? null;
+    console.log("UserInState", stateUserId);
     try {
       if (!stateUserId) {
         const userInDBRes = await fetch(`/v1/users`, {
@@ -40,8 +74,9 @@ export const checkUserStatus = user => {
         });
         const userInDB = await userInDBRes.json();
         console.log("UserInDB", userInDB);
-        if (userInDB.id) {
-          const fusdbal = await dispatch(getFUSDBalance(user.addr));
+        if (userInDB.id && userInDB.address) {
+          const fusdbal = await dispatch(getFUSDBalance(userInDB.address));
+          await dispatch(getUserCollection(userInDB.address));
           return dispatch({
             type: SESSION.CREATE_SESSION,
             user: {

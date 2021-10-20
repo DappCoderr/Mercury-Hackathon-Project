@@ -1,3 +1,6 @@
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 /** Images */
 import Logo from "../../../assets/imgs/logo.svg";
 import Sold_out from "../../../assets/imgs/sold_out.png";
@@ -6,7 +9,35 @@ import Sold_out from "../../../assets/imgs/sold_out.png";
 import "./packCard.scss";
 import cn from "classnames";
 
+/** Actions */
+import { buyPack } from "../../../reduxReducers/packsReducer";
+
+/** Hooks */
+import { useSocket } from "../../../providers/socketProvider";
+
 const PackCard = ({ pack }) => {
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.Session);
+
+  const { buyPackSocket } = useSocket();
+
+  const [buyLoader, setBuyLoader] = useState(false);
+
+  const buyCarPack = async () => {
+    try {
+      setBuyLoader(true);
+      await dispatch(buyPack(pack.id));
+      buyPackSocket({
+        ...pack,
+        sold: true,
+        owner_id: user?.id
+      });
+      setBuyLoader(false);
+    } catch (e) {
+      console.error("Error", e);
+    }
+  };
+
   return (
     <div
       className={cn({
@@ -43,8 +74,8 @@ const PackCard = ({ pack }) => {
         })}
       </div> */}
         {!pack.sold && (
-          <button>
-            <b>Buy (0.00 FUSD) </b>
+          <button onClick={buyCarPack}>
+            <b>{buyLoader ? "Buying ..." : "Buy(0.00 FUSD)"}</b>
           </button>
         )}
       </div>

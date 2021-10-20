@@ -8,11 +8,11 @@ import "./section2.scss";
 import PackCard from "../PackCard/packCard";
 
 /** Actions */
-import { getPackList } from "../../../reduxReducers/publicData";
+import { getPackList } from "../../../reduxReducers/packsReducer";
 
 const HomeSection2 = () => {
   const dispatch = useDispatch();
-  let packs = useSelector(state => state.PublicData).pack_list;
+  let packs = useSelector(state => state.PacksData).pack_list;
 
   const getTheListOfPacks = useCallback(async () => {
     try {

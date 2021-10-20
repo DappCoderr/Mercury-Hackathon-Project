@@ -4,6 +4,10 @@ import initDB from "./db";
 
 import UsersService from "./services/usersService";
 import PacksService from "./services/packsService";
+import ConnectionService from "./services/socketConnectionService";
+import TransactionsService from "./services/transactionsService";
+
+const socket = require("socket.io");
 
 async function run() {
   // const config = getConfig(envVars);
@@ -25,11 +29,25 @@ async function run() {
 
     const usersService = new UsersService();
     const packsService = new PacksService();
+    const transactionsService = new TransactionsService();
 
-    const app = initApp(usersService, packsService);
+    const app = initApp(usersService, packsService, transactionsService);
 
-    app.listen(config.port, () => {
+    const server = app.listen(config.port, () => {
       console.log(`Listening on port ${config.port}!`);
+    });
+
+    // Socket setup
+    const io = socket(server, {
+      cors: {
+        origin: "*",
+        methods: ["GET", "POST", "PATCH", "DELETE"]
+      }
+    });
+
+    io.on("connection", function (socket) {
+      console.log("Connection Extablished");
+      new ConnectionService(io, socket);
     });
   };
 

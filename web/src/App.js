@@ -2,6 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 import store from "./store";
 import { Provider } from "react-redux";
 
+import SocketProvider from "./providers/socketProvider";
 import PageWrapper from "./component/Pagewrapper/Page/page";
 import AppRoutes from "./appRoutes";
 
@@ -16,16 +17,18 @@ fcl
   .put("0xFungibleToken", process.env.REACT_APP_FT_CONTRACT)
   .put("0xNonFungibleToken", process.env.REACT_APP_NFT_CONTRACT)
   .put("0xFUSD", process.env.REACT_APP_FUSD_CONTRACT)
-  .put("OxCarypto", process.env.REACT_APP_CARYPTO_CONTRACT); // Will let us use `0xProfile` in our Cadence
+  .put("0xCarypto", process.env.REACT_APP_CARYPTO_CONTRACT);
 
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <PageWrapper>
-          <AppRoutes />
-        </PageWrapper>
-      </BrowserRouter>
+      <SocketProvider>
+        <BrowserRouter>
+          <PageWrapper>
+            <AppRoutes />
+          </PageWrapper>
+        </BrowserRouter>
+      </SocketProvider>
     </Provider>
   );
 }
