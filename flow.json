@@ -1,21 +1,28 @@
 {
-	"emulators": {
-		"default": {
-			"port": 3569,
-			"serviceAccount": "emulator-account"
-		}
+	"contracts": {
+		"CarPart": "./cadence/contract/CarPart.cdc"
 	},
-	"contracts": {},
 	"networks": {
-		"emulator": "127.0.0.1:3569",
 		"mainnet": "access.mainnet.nodes.onflow.org:9000",
 		"testnet": "access.devnet.nodes.onflow.org:9000"
 	},
+
 	"accounts": {
-		"emulator-account": {
-			"address": "f8d6e0586b0a20c7",
-			"key": "611656e9be5238d7a804cd915ce4d04b357c34eaf52925f91aab32b8525245ca"
+        "testnet-account": {
+            "address": "0x7896d69e23dd95a4",
+            "key": {
+                "type": "hex",
+                "index": 0,
+                "signatureAlgorithm": "ECDSA_P256",
+                "hashAlgorithm": "SHA3_256",
+                "privateKey": "f96cdfa1ec1d28dfc5978fd26a134c06c524e9dc28cc68b09c4ac11c89860884"
+            }
+        }
+    },
+
+	"deployments": {
+		"testnet": {
+			"testnet-account": ["CarPart"]
 		}
-	},
-	"deployments": {}
+	}
 }
