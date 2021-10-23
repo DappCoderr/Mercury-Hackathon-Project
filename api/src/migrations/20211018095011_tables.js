@@ -47,8 +47,8 @@ exports.up = function (knex, Promise) {
     })
     .createTable("transactions", function (table) {
       table.uuid("id").primary();
-      table.uuid("user_id").notNullable();
-      table.foreign("user_id").references("users.id").onDelete("CASCADE");
+      table.uuid("tx_user_id").notNullable();
+      table.foreign("tx_user_id").references("users.id").onDelete("CASCADE");
       table.string("transaction_id").notNullable();
       table.int("transaction_status").notNullable();
       table.timestamp("created_at").defaultTo(knex.fn.now());

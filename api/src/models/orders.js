@@ -10,7 +10,7 @@ class Orders extends BaseModel {
     return "orders";
   }
   static relationMappings = {
-    user_id: {
+    order_user_id: {
       relation: Model.BelongsToOneRelation,
       modelClass: Users,
       join: {
@@ -18,7 +18,7 @@ class Orders extends BaseModel {
         to: "users.id"
       }
     },
-    pack_id: {
+    order_pack_id: {
       relation: Model.BelongsToOneRelation,
       modelClass: Packs,
       join: {

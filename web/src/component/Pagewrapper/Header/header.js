@@ -32,19 +32,18 @@ const Header = ({ props }) => {
     });
   }, [dispatch]);
 
-  const scrolled = useRef(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const onScroll = useCallback(
     e => {
-      console.log("Scroll", e);
       const scrollTop = e?.srcElement?.scrollTop;
       if (scrollTop > 20) {
-        scrolled.current = true;
+        setScrolled(true);
       } else {
-        scrolled.current = false;
+        setScrolled(false);
       }
     },
-    [scrolled]
+    [setScrolled]
   );
 
   useEffect(() => {
@@ -63,8 +62,8 @@ const Header = ({ props }) => {
   return (
     <div
       className={cn({
-        "top-header": !scrolled.current,
-        "top-header-solid": scrolled.current
+        "top-header": !scrolled,
+        "top-header-solid": scrolled
       })}
     >
       <span className="left-menu"> Car NFT</span>

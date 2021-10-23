@@ -7,25 +7,22 @@ class ConnectionService {
     socket.on("packSold", value => {
       this.handlePackSold(value);
     });
-    socket.on("disconnect", () => console.log("Disconnect"));
+    socket.on("disconnect", () => this.onDisconnect());
     socket.on("connect_error", err => {
       console.log(`connect_error due to ${err.message}`);
     });
   }
 
   sendPackSoldNotification(message) {
-    console.log("Value-2", message);
     this.io.sockets.emit("pack-sold", message);
   }
 
-  static sendPackSoldNotification1(message) {
-    console.log("Value-1", message, this.io);
-    this.io.sockets.emit("pack-sold1", message);
+  handlePackSold(packId) {
+    this.sendPackSoldNotification(packId);
   }
 
-  handlePackSold(packId) {
-    console.log("Value-3", packId);
-    this.sendPackSoldNotification(packId);
+  onDisconnect() {
+    this.io.sockets.emit("socket-disconnected", "Please Reconnect");
   }
 }
 

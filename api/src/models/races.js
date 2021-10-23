@@ -13,7 +13,7 @@ class Races extends BaseModel {
   }
 
   static relationMappings = {
-    user_id_1: {
+    race_user_id_1: {
       relation: Model.BelongsToOneRelation,
       modelClass: Users,
       join: {
@@ -21,7 +21,7 @@ class Races extends BaseModel {
         to: "users.id"
       }
     },
-    user_id_2: {
+    race_user_id_2: {
       relation: Model.BelongsToOneRelation,
       modelClass: Users,
       join: {
