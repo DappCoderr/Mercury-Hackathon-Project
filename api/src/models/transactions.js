@@ -3,7 +3,7 @@ import { Users } from "./users";
 const { Model } = require("objection");
 
 class Transactions extends BaseModel {
-  user_id;
+  tx_user_id;
   transaction_id;
   transaction_status;
   static get tableName() {
@@ -15,7 +15,7 @@ class Transactions extends BaseModel {
       relation: Model.BelongsToOneRelation,
       modelClass: Users,
       join: {
-        from: "transactions.user_id",
+        from: "transactions.tx_user_id",
         to: "users.id"
       }
     }

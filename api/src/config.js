@@ -1,8 +1,6 @@
 const env = process.env;
 const path = require("path");
 
-console.log("Environments", env);
-
 const config = {
   envMode: env.NODE_ENV,
   port: env.PORT || 3001,

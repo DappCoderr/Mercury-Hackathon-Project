@@ -1,8 +1,8 @@
 export const CHECK_COLLECTION = `
-  import CaryptoContract from 0xCarypto
+  import CarPart from 0xCarypto
 
   pub fun main(addr: Address): Bool {
-    let ref = getAccount(addr).getCapability<&{CaryptoContract.CollectionPublic}>(CaryptoContract.CollectionPublicPath).check()
+    let ref = getAccount(addr).getCapability<&{CarPart.PartReceiver}>(/public/PartStoragePath).check()
     return ref
   }
 `;

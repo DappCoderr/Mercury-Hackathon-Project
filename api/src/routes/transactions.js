@@ -14,6 +14,7 @@ function initTransactionsRouter(transactionsService) {
       );
       return res.status(200).json(transaction);
     } catch (e) {
+      console.log("Trans Error", e);
       return res.status(400).json({ error: e });
     }
   });

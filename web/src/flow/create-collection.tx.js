@@ -1,12 +1,12 @@
 export const CREATE_COLLECTION = `
-  import CaryptoContract from 0xCarypto
+  import CarPart from 0xCarypto
 
   transaction{
     prepare(signer:AuthAccount) {
-      let partStorage <- CaryptoContract.createEmptyPartStorage()
-      signer.save<@CaryptoContract.PartStorage>(<-partStorage, to: /storage/PartStoragePath)
-      signer.link<&{CaryptoContract.PartReceiver}>(/public/PartStoragePublicPath, target: /storage/PartStoragePath)
-      log("Partstorage added in your account")
+      let partStorage <- CarPart.createEmptyPartStorage()
+      signer.save<@CarPart.PartStorage>(<-partStorage, to: /storage/PartStoragePath)
+      signer.link<&{CarPart.PartReceiver}>(/public/PartStoragePath, target:/storage/PartStoragePath)
+      //log("Partstorage added in account")
     }
   }
 `;
