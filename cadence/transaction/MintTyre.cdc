@@ -1,6 +1,6 @@
-import CarPart from 0x01
+import CarPart from 0x7896d69e23dd95a4
 
-transaction(recipient:Address, name:String weight:UInt64, type:String) {
+transaction(recipient:Address, name:String, weight:UInt64, type:String) {
 
     let minter: &CarPart.Admin
 
