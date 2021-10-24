@@ -1,0 +1,53 @@
+@import "../../Pagewrapper/Header/header.scss";
+$bg-img: url("../../../assets/imgs/home-bg.jpeg");
+
+.section-1 {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  button {
+    width: 400px;
+    background: #7a140a;
+    box-shadow: 0 6px #ab3c3c;
+    height: 50px;
+    border-radius: 40px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 18px;
+    border: none;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    .icon {
+      height: 30px;
+      width: auto;
+      margin-right: 20px;
+    }
+  }
+  button:active,
+  button:hover {
+    box-shadow: 0 5px #ab3c3c;
+    transform: translateY(4px);
+  }
+  // }
+
+  .started-pack-button {
+    right: 5%;
+    top: 20%;
+  }
+
+  .build-your-first-car {
+    right: 15%;
+    top: 40%;
+  }
+
+  .race-your-car {
+    right: 25%;
+    top: 60%;
+  }
+}

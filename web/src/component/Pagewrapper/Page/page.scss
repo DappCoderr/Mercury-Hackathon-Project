@@ -1,0 +1,21 @@
+@import "../Header/header.scss";
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  position: relative;
+  background: transparent;
+
+  .header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 9999;
+  }
+
+  .content {
+    // padding-top: $headerHeight;
+    background: transparent;
+  }
+}

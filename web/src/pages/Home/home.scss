@@ -1,0 +1,22 @@
+@import "../../component/Pagewrapper/Header/header.scss";
+$bg-img: url("../../assets/imgs/home-bg.jpeg");
+
+.home-page {
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  background-image: $bg-img;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  .overlay {
+    height: auto;
+    width: calc(100vw - 15px);
+    top: $headerHeight;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "editor.tabSize": 4,
+  "files.trimTrailingWhitespace": true,
+  "prettier.trailingComma": "none",
+  "emmet.variables": {},
+  "emmet.preferences": {},
+  "css.validate": false,
+  "scss.validate": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
