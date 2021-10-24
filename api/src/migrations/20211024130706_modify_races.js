@@ -1,11 +1,11 @@
 exports.up = function (knex) {
   return knex.schema.alterTable("races", table => {
-    table.integer("request_status").notNullable();
+    table.uuid("winner").nullable().alter();
   });
 };
 
 exports.down = function (knex) {
   return knex.schema.alterTable("races", table => {
-    table.dropColumn("request_status");
+    table.uuid("winner").notNullable().alter();
   });
 };

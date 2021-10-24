@@ -1,11 +1,41 @@
+@import "../../component/Pagewrapper/Header/header.scss";
+
 .workshop-page {
   width: 100vw;
   height: 100vh;
   overflow: auto;
   color: white;
+  background: black;
 
   .content {
     height: 100%;
-    padding-top: 100px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 100px 50px 50px 50px;
+    display: grid;
+    grid-template-columns: 68% 30%;
+    gap: 2%;
+
+    .car-section {
+      background: white;
+      height: 100%;
+      border-radius: 10px;
+    }
+    .option-section {
+      width: 100%;
+      .create-car {
+        width: 100%;
+        height: 51px;
+        margin-top: 20px;
+        background: transparent
+          linear-gradient(180deg, #bc0404 0%, #e50c0c 27%, #5e0202 100%) 0% 0%
+          no-repeat padding-box;
+        border: 1px solid #707070;
+        border-radius: 26px;
+        opacity: 1;
+        cursor: pointer;
+        font-size: 16px;
+      }
+    }
   }
 }

@@ -7,12 +7,12 @@ import { query, mutate } from "@onflow/fcl";
 
 import { addTransaction } from "./transactionReducer";
 
-export const SESSION = Object.freeze({
+const SESSION = Object.freeze({
   CREATE_SESSION: "CREATE_SESSION",
   EXPIRE_SESSION: "EXPIRE_SESSION"
 });
 
-export const INITIAL_STATE = {
+const INITIAL_STATE = {
   user: null
 };
 

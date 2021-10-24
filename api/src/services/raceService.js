@@ -17,7 +17,12 @@ class RaceService {
         if (!car_2) {
           throw "Didn't Find Car2";
         } else {
-          const newRace = await Races.query.insertAndFetch({
+          const existingRace = await Races.query().findOne({
+            car_nft_id_1: car_id_1,
+            car_nft_id_2: car_id_2
+          });
+          if (existingRace) return existingRace;
+          const newRace = await Races.query().insertAndFetch({
             user_id_1: car_1.user_id,
             user_id_2: car_2.user_id,
             car_nft_id_1: car_id_1,

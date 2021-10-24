@@ -8,20 +8,24 @@ class CarService {
   };
 
   findOrCreateNewCar = async (userID, carID, configVal) => {
-    if (userID && carID) {
+    if (userID && carID && configVal) {
       let user = await Users.query().findById(userID);
       if (!user) {
         throw "User Doen't Exist";
       } else {
-        car = await cars.query().insertAndFetch({
+        let existingCar = await Cars.query().findOne({
+          car_nft_id: carID
+        });
+        if (existingCar) return existingCar;
+        const newCar = await Cars.query().insertAndFetch({
           user_id: userID,
           car_nft_id: carID,
           car_config_value: configVal
         });
-        return car;
+        return newCar;
       }
     }
-    throw "Can't create User Entry without Address";
+    throw "Can't create User Entry without userID,carID, configVal ";
   };
 
   updateCarOwner = async (userID, carID) => {

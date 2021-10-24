@@ -38,11 +38,7 @@ exports.up = function (knex, Promise) {
       table.string("car_nft_id_1").notNullable();
       table.string("car_nft_id_2").notNullable();
       table.integer("request_status").notNullable();
-      table
-        .uuid("winner")
-        .notNullable()
-        .references("users.id")
-        .onDelete("cascade");
+      table.uuid("winner").references("users.id").onDelete("cascade");
       table.timestamp("created_at").defaultTo(knex.fn.now());
       table.timestamp("updated_at").defaultTo(knex.fn.now());
     })

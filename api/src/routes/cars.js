@@ -22,6 +22,7 @@ function initCarsRouter(carsService) {
       );
       return res.status(200).json(transaction);
     } catch (e) {
+      console.log("Error Car", e);
       return res.status(400).json({
         error: e
       });

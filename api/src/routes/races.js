@@ -21,6 +21,7 @@ function initRacesRouter(raceService) {
       );
       return res.status(200).json(transaction);
     } catch (e) {
+      console.error("Race Err", e);
       return res.status(400).json({
         error: e
       });
@@ -41,6 +42,7 @@ function initRacesRouter(raceService) {
         error: "Missing Parameters !!"
       });
     } catch (e) {
+      console.error("Race Err", e);
       return res.status(400).json({
         error: e
       });
