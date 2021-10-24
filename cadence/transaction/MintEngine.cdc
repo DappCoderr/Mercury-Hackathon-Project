@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import CarPart from 0x7896d69e23dd95a4
-=======
-import CarPart from 0x01
->>>>>>> 6d990f56a6c659da75f2b10e85c9d0af52fc9784
 
 transaction(recipient:Address, name:String, hp:UInt64, type:String) {
 

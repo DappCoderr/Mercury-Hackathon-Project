@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 import CarPart from 0x7896d69e23dd95a4
 
 transaction(recipient:Address, name:String, weight:UInt64, type:String) {
-=======
-import CarPart from 0x01
-
-transaction(recipient:Address, name:String weight:UInt64, type:String) {
->>>>>>> 6d990f56a6c659da75f2b10e85c9d0af52fc9784
 
     let minter: &CarPart.Admin
 
