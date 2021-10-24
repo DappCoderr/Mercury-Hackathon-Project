@@ -8,6 +8,7 @@ class Races extends BaseModel {
   car_nft_id_1;
   car_nft_id_2;
   winner;
+  request_status; // 0: Requested; 1: Request_accepted, 2: Completed, 3: Request_rejected
   static get tableName() {
     return "races";
   }
