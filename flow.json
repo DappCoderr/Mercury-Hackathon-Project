@@ -1,28 +1,38 @@
 {
-	"contracts": {
-		"CarPart": "./cadence/contract/CarPart.cdc"
-	},
-	"networks": {
-		"mainnet": "access.mainnet.nodes.onflow.org:9000",
-		"testnet": "access.devnet.nodes.onflow.org:9000"
-	},
+  "contracts": {
+    "CarPartV1": "./cadence/contract/CarPartV1.cdc"
+  },
+  "networks": {
+    "mainnet": "access.mainnet.nodes.onflow.org:9000",
+    "testnet": "access.devnet.nodes.onflow.org:9000"
+  },
 
-	"accounts": {
-        "testnet-account": {
-            "address": "0x7896d69e23dd95a4",
-            "key": {
-                "type": "hex",
-                "index": 0,
-                "signatureAlgorithm": "ECDSA_P256",
-                "hashAlgorithm": "SHA3_256",
-                "privateKey": "f96cdfa1ec1d28dfc5978fd26a134c06c524e9dc28cc68b09c4ac11c89860884"
-            }
-        }
+  "accounts": {
+    "testnet-account": {
+      "address": "0x7896d69e23dd95a4",
+      "key": {
+        "type": "hex",
+        "index": 0,
+        "signatureAlgorithm": "ECDSA_P256",
+        "hashAlgorithm": "SHA3_256",
+        "privateKey": "f96cdfa1ec1d28dfc5978fd26a134c06c524e9dc28cc68b09c4ac11c89860884"
+      }
     },
+    "testnet-account2": {
+      "address": "0xac07e3a9cadab655",
+      "key": {
+        "type": "hex",
+        "index": 0,
+        "signatureAlgorithm": "ECDSA_P256",
+        "hashAlgorithm": "SHA3_256",
+        "privateKey": "7e23e5ef06dcb8cef80c36d58a0b52291f875c864b69382c2db0a13204643c8b"
+      }
+    }
+  },
 
-	"deployments": {
-		"testnet": {
-			"testnet-account": ["CarPart"]
-		}
-	}
+  "deployments": {
+    "testnet": {
+      "testnet-account2": ["CarPartV1"]
+    }
+  }
 }
