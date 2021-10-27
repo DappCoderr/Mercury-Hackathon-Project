@@ -1,0 +1,41 @@
+.ws-car-part-card,
+.ws-car-part-card-selected {
+  box-sizing: border-box;
+  height: 120px;
+  border-radius: 10px;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-right: 20px;
+
+  img {
+    height: 15px;
+    width: auto;
+  }
+
+  button {
+    width: auto;
+    height: 20px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 26px;
+    opacity: 1;
+    cursor: pointer;
+    font-size: 12px;
+  }
+}
+
+.ws-car-part-card {
+  background: transparent
+    linear-gradient(180deg, #bc0404 0%, #e50c0c 27%, #5e0202 100%) 0% 0%
+    no-repeat padding-box;
+}
+
+.ws-car-part-card-selected {
+  background: transparent
+    linear-gradient(180deg, #52be80 0%, #229954 27%, #196f3d 100%) 0% 0%
+    no-repeat padding-box;
+}

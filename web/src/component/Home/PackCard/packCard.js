@@ -15,6 +15,9 @@ import { buyPack } from "../../../reduxReducers/packsReducer";
 /** Hooks */
 import { useSocket } from "../../../providers/socketProvider";
 
+/** Flow */
+import * as fcl from "@onflow/fcl";
+
 const PackCard = ({ pack }) => {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.Session);
@@ -73,9 +76,14 @@ const PackCard = ({ pack }) => {
           );
         })}
       </div> */}
-        {!pack.sold && (
+        {!pack.sold && user && (
           <button onClick={buyCarPack}>
             <b>{buyLoader ? "Buying ..." : "Buy(0.00 FUSD)"}</b>
+          </button>
+        )}
+        {!user && (
+          <button onClick={fcl.logIn}>
+            <b>Connect Wallet</b>
           </button>
         )}
       </div>

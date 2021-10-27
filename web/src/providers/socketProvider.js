@@ -39,9 +39,12 @@ const SocketProvider = props => {
   const buyPackSocket = updatedPack => {
     socket.emit("packSold", updatedPack);
   };
+  const requestCarRacing = (userID, carID) => {
+    socket.emit("carRaceRequest", { userID, carID });
+  };
 
   return (
-    <SocketContext.Provider value={{ buyPackSocket }}>
+    <SocketContext.Provider value={{ buyPackSocket, requestCarRacing }}>
       {props.children}
     </SocketContext.Provider>
   );

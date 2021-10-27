@@ -8,12 +8,13 @@ class Races extends BaseModel {
   car_nft_id_1;
   car_nft_id_2;
   winner;
+  request_status; // 0: Requested; 1: Request_accepted, 2: Completed, 3: Request_rejected
   static get tableName() {
     return "races";
   }
 
   static relationMappings = {
-    user_id_1: {
+    race_user_id_1: {
       relation: Model.BelongsToOneRelation,
       modelClass: Users,
       join: {
@@ -21,7 +22,7 @@ class Races extends BaseModel {
         to: "users.id"
       }
     },
-    user_id_2: {
+    race_user_id_2: {
       relation: Model.BelongsToOneRelation,
       modelClass: Users,
       join: {

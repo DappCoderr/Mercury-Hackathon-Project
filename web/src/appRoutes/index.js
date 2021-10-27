@@ -26,7 +26,7 @@ const CompRoutes = () => {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <SecuredRoute exact path="/workshop" component={WorkShop} />
-        <SecuredRoute exact path="/race" component={Race} />
+        <SecuredRoute exact path="/races" component={Race} />
         <Route component={Error404} />
       </Switch>
     </Suspense>

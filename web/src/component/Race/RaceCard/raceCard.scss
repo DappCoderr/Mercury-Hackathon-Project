@@ -1,0 +1,55 @@
+.race-card,
+.race-card-selected {
+  box-sizing: border-box;
+  height: 40px;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 5px;
+
+  span {
+    font-size: 20px;
+  }
+  .info {
+    color: black;
+  }
+  .success {
+    color: rgb(39, 177, 92);
+  }
+  .lost {
+    color: rgb(177, 60, 39);
+  }
+  .progess {
+    color: rgb(39, 83, 177);
+  }
+  .pending {
+    color: rgb(177, 163, 39);
+  }
+  .rejected {
+    color: rgb(177, 90, 39);
+  }
+
+  button {
+    width: auto;
+    height: 40px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 26px;
+    opacity: 1;
+    cursor: pointer;
+    font-size: 15px;
+  }
+}
+
+.race-card {
+  background: white;
+}
+
+.race-card-selected {
+  background: transparent
+    linear-gradient(180deg, #52be80 0%, #229954 27%, #196f3d 100%) 0% 0%
+    no-repeat padding-box;
+}

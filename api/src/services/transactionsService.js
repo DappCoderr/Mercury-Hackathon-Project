@@ -2,14 +2,15 @@ import { Transactions } from "../models/transactions";
 
 class TransactionsService {
   findOrCreateNewTransaction = async (userID, transactionID) => {
+    console.log("UserId", userID, transactionID);
     if (userID && transactionID) {
       let transaction = await Transactions.query().findOne({
-        user_id: userID,
+        tx_user_id: userID,
         transaction_id: transactionID
       });
       if (!transaction) {
-        transaction = await Users.query().insertAndFetch({
-          user_id: userID,
+        transaction = await Transactions.query().insertAndFetch({
+          tx_user_id: userID,
           transaction_id: transactionID,
           transaction_status: 0
         });
@@ -26,7 +27,7 @@ class TransactionsService {
   ) => {
     if (userID && transactionID) {
       let transaction = await Transactions.query().findOne({
-        user_id: userID,
+        tx_user_id: userID,
         transaction_id: transactionID
       });
       if (transaction) {

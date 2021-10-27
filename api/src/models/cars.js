@@ -2,24 +2,24 @@ import { BaseModel } from "./base";
 import { Users } from "./users";
 const { Model } = require("objection");
 
-class Transactions extends BaseModel {
-  tx_user_id;
-  transaction_id;
-  transaction_status;
+class Cars extends BaseModel {
+  user_id;
+  car_nft_id;
+  car_config_value;
   static get tableName() {
-    return "transactions";
+    return "cars";
   }
 
   static relationMappings = {
-    user_id: {
+    car_user_id: {
       relation: Model.BelongsToOneRelation,
       modelClass: Users,
       join: {
-        from: "transactions.tx_user_id",
+        from: "cars.user_id",
         to: "users.id"
       }
     }
   };
 }
 
-export { Transactions };
+export { Cars };

@@ -25,7 +25,6 @@ function initPacksRouter(packsService, usersService) {
             packId,
             userTransaction.id
           );
-          // ConnectionService.sendPackSoldNotification1(packId);
           return res.status(200).json(transaction);
         }
       }

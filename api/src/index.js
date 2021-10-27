@@ -6,6 +6,8 @@ import UsersService from "./services/usersService";
 import PacksService from "./services/packsService";
 import ConnectionService from "./services/socketConnectionService";
 import TransactionsService from "./services/transactionsService";
+import RaceService from "./services/raceService";
+import CarService from "./services/carsService";
 
 const socket = require("socket.io");
 
@@ -30,8 +32,16 @@ async function run() {
     const usersService = new UsersService();
     const packsService = new PacksService();
     const transactionsService = new TransactionsService();
+    const raceService = new RaceService();
+    const carsService = new CarService();
 
-    const app = initApp(usersService, packsService, transactionsService);
+    const app = initApp(
+      usersService,
+      packsService,
+      transactionsService,
+      carsService,
+      raceService
+    );
 
     const server = app.listen(config.port, () => {
       console.log(`Listening on port ${config.port}!`);

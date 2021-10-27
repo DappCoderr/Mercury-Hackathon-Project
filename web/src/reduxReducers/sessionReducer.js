@@ -1,15 +1,18 @@
 /* @flow */
 import { GET_FUSD_BALANCE } from "../flow/get-fusd-balance.script";
 import { CHECK_COLLECTION } from "../flow/check-collection.script";
+import { CREATE_COLLECTION } from "../flow/create-collection.tx";
 
-import { query } from "@onflow/fcl";
+import { query, mutate } from "@onflow/fcl";
 
-export const SESSION = Object.freeze({
+import { addTransaction } from "./transactionReducer";
+
+const SESSION = Object.freeze({
   CREATE_SESSION: "CREATE_SESSION",
   EXPIRE_SESSION: "EXPIRE_SESSION"
 });
 
-export const INITIAL_STATE = {
+const INITIAL_STATE = {
   user: null
 };
 
@@ -27,34 +30,34 @@ const getFUSDBalance = userAddr => {
   };
 };
 
-const getUserCollection = userAddr => {
-  return async () => {
+const getUserCollection = (userID, userAddr) => {
+  return async dispatch => {
     try {
       let collection = await query({
         cadence: CHECK_COLLECTION,
         args: (arg, t) => [arg(userAddr, t.Address)]
       });
-      console.log("Collection Here", collection);
+      if (!collection) {
+        collection = await dispatch(createUserCollection(userID, userAddr));
+      }
       return collection;
     } catch (err) {
-      console.error("Error collect", err);
-      // throw err;
+      throw err;
     }
   };
 };
 
-const createUserCollection = userAddr => {
-  return async () => {
+const createUserCollection = (userID, userAddr) => {
+  return async dispatch => {
     try {
-      let collection = await query({
-        cadence: CHECK_COLLECTION,
-        args: (arg, t) => [arg(userAddr, t.Address)]
+      let collectionTransactionID = await mutate({
+        cadence: CREATE_COLLECTION,
+        limit: 55
       });
-      console.log("Collection Here", collection);
-      return collection;
+      await dispatch(addTransaction(userID, collectionTransactionID));
+      if (collectionTransactionID) return true;
     } catch (err) {
-      console.error("Error collect", err);
-      // throw err;
+      throw err;
     }
   };
 };
@@ -62,9 +65,9 @@ const createUserCollection = userAddr => {
 export const checkUserStatus = user => {
   return async (dispatch, getState) => {
     const stateUserId = getState()?.Session?.user?.id ?? null;
-    console.log("UserInState", stateUserId);
     try {
       if (!stateUserId) {
+        // if (true) {
         const userInDBRes = await fetch(`/v1/users`, {
           method: "POST",
           headers: {
@@ -76,13 +79,16 @@ export const checkUserStatus = user => {
         console.log("UserInDB", userInDB);
         if (userInDB.id && userInDB.address) {
           const fusdbal = await dispatch(getFUSDBalance(userInDB.address));
-          await dispatch(getUserCollection(userInDB.address));
+          const collectionStatus = await dispatch(
+            getUserCollection(userInDB.id, userInDB.address)
+          );
           return dispatch({
             type: SESSION.CREATE_SESSION,
             user: {
               ...user,
               id: userInDB.id,
-              fusdBal: fusdbal
+              fusdBal: fusdbal,
+              collectionStatus
             }
           });
         }

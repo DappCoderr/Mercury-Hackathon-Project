@@ -11,10 +11,18 @@ import { json, urlencoded } from "body-parser";
 import initUsersRouter from "./routes/users";
 import initPacksRouter from "./routes/packs";
 import initTransactionsRouter from "./routes/transactions";
+import initCarsRouter from "./routes/cars";
+import initRacesRouter from "./routes/races";
 
 const V1 = "/v1/";
 
-const initApp = (usersService, packsService, transactionsService) => {
+const initApp = (
+  usersService,
+  packsService,
+  transactionsService,
+  carsService,
+  raceService
+) => {
   const app = express();
 
   app.use(cors());
@@ -23,7 +31,8 @@ const initApp = (usersService, packsService, transactionsService) => {
   app.use(V1, initUsersRouter(usersService));
   app.use(V1, initPacksRouter(packsService, usersService));
   app.use(V1, initTransactionsRouter(transactionsService));
-  //   app.use(V1, initStorefrontRouter(storefrontService));
+  app.use(V1, initCarsRouter(carsService));
+  app.use(V1, initRacesRouter(raceService));
 
   const serveReactApp = () => {
     console.log("Serve React App");

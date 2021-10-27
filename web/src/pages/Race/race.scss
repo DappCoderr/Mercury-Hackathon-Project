@@ -1,11 +1,65 @@
+@import "../../component/Pagewrapper/Header/header.scss";
+
 .race-page {
   width: 100vw;
   height: 100vh;
   overflow: auto;
-  color: white;
+  background: black;
 
   .content {
     height: 100%;
-    padding-top: 100px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 100px 50px 50px 50px;
+    display: grid;
+    grid-template-columns: 48% 50%;
+    gap: 2%;
+    .left-section {
+      height: 100%;
+      .car-section {
+        margin-top: 5px;
+        margin-bottom: 25px;
+        background: white;
+        height: 48%;
+        overflow: auto;
+        border-radius: 10px;
+        box-sizing: border-box;
+        padding: 20px;
+        span {
+          font-size: 20px;
+          color: black;
+        }
+        .cars-list {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+      .race-section {
+        margin-top: 5px;
+        height: 45%;
+        overflow: auto;
+        box-sizing: border-box;
+      }
+    }
+    .option-section {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+
+      .create-car {
+        width: 100%;
+        height: 51px;
+        margin-top: 20px;
+        background: transparent
+          linear-gradient(180deg, #bc0404 0%, #e50c0c 27%, #5e0202 100%) 0% 0%
+          no-repeat padding-box;
+        border: 1px solid #707070;
+        border-radius: 26px;
+        opacity: 1;
+        cursor: pointer;
+        font-size: 16px;
+      }
+    }
   }
 }

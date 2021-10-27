@@ -37,20 +37,26 @@ exports.up = function (knex, Promise) {
       table.foreign("user_id_2").references("users.id").onDelete("CASCADE");
       table.string("car_nft_id_1").notNullable();
       table.string("car_nft_id_2").notNullable();
-      table
-        .uuid("winner")
-        .notNullable()
-        .references("users.id")
-        .onDelete("cascade");
+      table.integer("request_status").notNullable();
+      table.uuid("winner").references("users.id").onDelete("cascade");
       table.timestamp("created_at").defaultTo(knex.fn.now());
       table.timestamp("updated_at").defaultTo(knex.fn.now());
     })
     .createTable("transactions", function (table) {
       table.uuid("id").primary();
+      table.uuid("tx_user_id").notNullable();
+      table.foreign("tx_user_id").references("users.id").onDelete("CASCADE");
+      table.string("transaction_id").notNullable();
+      table.integer("transaction_status").notNullable();
+      table.timestamp("created_at").defaultTo(knex.fn.now());
+      table.timestamp("updated_at").defaultTo(knex.fn.now());
+    })
+    .createTable("cars", function (table) {
+      table.uuid("id").primary();
       table.uuid("user_id").notNullable();
       table.foreign("user_id").references("users.id").onDelete("CASCADE");
-      table.string("transaction_id").notNullable();
-      table.int("transaction_status").notNullable();
+      table.string("car_nft_id").notNullable().unique();
+      table.integer("car_config_value").notNullable();
       table.timestamp("created_at").defaultTo(knex.fn.now());
       table.timestamp("updated_at").defaultTo(knex.fn.now());
     });

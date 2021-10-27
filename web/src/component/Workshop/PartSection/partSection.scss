@@ -1,0 +1,32 @@
+.ws-part-section {
+  width: 100%;
+  box-sizing: border-box;
+  height: 150px;
+  padding: 10px;
+  display: flex;
+  background: white;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 5px;
+
+  .type-section {
+    width: 120px;
+    color: black;
+    font-size: 20px;
+    text-transform: uppercase;
+    border-right: 1px solid gray;
+    margin-right: 20px;
+    height: 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .options-section {
+    width: calc(100% - 120px);
+    overflow: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}

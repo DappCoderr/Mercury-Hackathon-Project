@@ -15,6 +15,9 @@ import {
 import "./header.scss";
 import cn from "classnames";
 
+/** Images */
+import Logo from "../../../assets/imgs/logo.svg";
+
 const Header = ({ props }) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -32,19 +35,18 @@ const Header = ({ props }) => {
     });
   }, [dispatch]);
 
-  const scrolled = useRef(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const onScroll = useCallback(
     e => {
-      console.log("Scroll", e);
       const scrollTop = e?.srcElement?.scrollTop;
       if (scrollTop > 20) {
-        scrolled.current = true;
+        setScrolled(true);
       } else {
-        scrolled.current = false;
+        setScrolled(false);
       }
     },
-    [scrolled]
+    [setScrolled]
   );
 
   useEffect(() => {
@@ -63,11 +65,13 @@ const Header = ({ props }) => {
   return (
     <div
       className={cn({
-        "top-header": !scrolled.current,
-        "top-header-solid": scrolled.current
+        "top-header": !scrolled,
+        "top-header-solid": scrolled
       })}
     >
-      <span className="left-menu"> Car NFT</span>
+      <div className="left-menu">
+        <img height="30px" width="auto" src={Logo} alt="Carypto" />
+      </div>
       <div className="right-menu">
         <div className="menu">
           <Link
@@ -79,16 +83,6 @@ const Header = ({ props }) => {
             })}
           >
             Home
-          </Link>
-          <Link
-            to="/"
-            active
-            className={cn({
-              "menu-item-active": location.pathname === "/fetaures",
-              "menu-item": location.pathname !== "/features"
-            })}
-          >
-            Features
           </Link>
           <Link
             to="/workshop"
@@ -104,8 +98,8 @@ const Header = ({ props }) => {
             to="/race"
             active
             className={cn({
-              "menu-item-active": location.pathname === "/race",
-              "menu-item": location.pathname !== "/race"
+              "menu-item-active": location.pathname === "/races",
+              "menu-item": location.pathname !== "/races"
             })}
           >
             Race
