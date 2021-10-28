@@ -10,10 +10,7 @@ import "./raceCard.scss";
 import cn from "classnames";
 
 /** Actions */
-import {
-  requestForRacing,
-  selectCar1
-} from "../../../reduxReducers/raceReducer";
+import { acceptRaceRequest } from "../../../reduxReducers/raceReducer";
 
 /** Hooks */
 import { useSocket } from "../../../providers/socketProvider";
@@ -25,9 +22,13 @@ const RaceCard = ({ race }) => {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.Session);
 
-  const { requestCarRacing } = useSocket();
-
-  const [requesting, setRequesting] = useState(false);
+  const acceptThisRaceRequest = async () => {
+    try {
+      await dispatch(acceptRaceRequest(race.id));
+    } catch (e) {
+      console.error("error", e);
+    }
+  };
 
   return (
     <div

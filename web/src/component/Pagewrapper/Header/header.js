@@ -95,7 +95,7 @@ const Header = ({ props }) => {
             Workshop
           </Link>
           <Link
-            to="/race"
+            to="/races"
             active
             className={cn({
               "menu-item-active": location.pathname === "/races",

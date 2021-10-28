@@ -21,7 +21,7 @@ const SocketProvider = props => {
     const newSocket = io(process.env.REACT_APP_SOCKET_CONNECT);
     setSocket(newSocket);
     return () => newSocket.close();
-  }, [setSocket]);
+  }, []);
 
   const onPackSold = useCallback(
     updatedPack => {
