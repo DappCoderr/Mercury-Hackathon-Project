@@ -1,6 +1,6 @@
-import CarPartV3 from 0x8b7cf187194b75df
+import CarPart from 0xe49c60ae5eb5e80c
 
-pub fun main(): {UInt64: CarPartV3.TyreData} {
-  let tyre = CarPartV3.listTyre()
+pub fun main(): {UInt64: CarPart.TyreData} {
+  let tyre = CarPart.listTyre()
   return tyre
 }

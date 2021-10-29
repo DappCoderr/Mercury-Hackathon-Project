@@ -1,9 +1,9 @@
-import CarPartV3 from 0x8b7cf187194b75df
+import CarPart from 0xe49c60ae5eb5e80c
 
 transaction {
   prepare(signer: AuthAccount) {
-    let collection <- CarPartV3.createEmptyCollection()
-    signer.save<@CarPartV3.Collection>(<-collection, to: CarPartV3.CollectionStoragePath)
-    signer.link<&{CarPartV3.CollectionPublic}>(CarPartV3.CollectionPublicPath, target: CarPartV3.CollectionStoragePath)
+    let collection <- CarPart.createEmptyCollection()
+    signer.save<@CarPart.Collection>(<-collection, to: CarPart.CollectionStoragePath)
+    signer.link<&{CarPart.CollectionPublic}>(CarPart.CollectionPublicPath, target: CarPart.CollectionStoragePath)
   }
 }

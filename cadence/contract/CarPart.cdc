@@ -1,4 +1,4 @@
-pub contract CarPartV3 {
+pub contract CarPart {
 
   pub var engineData: {UInt64: EngineData}
   pub var bodyData: {UInt64: BodyData}
@@ -41,11 +41,11 @@ pub contract CarPartV3 {
 
     init(dataID: UInt64) {
       pre {
-        CarPartV3.engineData[dataID] != nil : "Could not create engine: data does not exist."
+        CarPart.engineData[dataID] != nil : "Could not create engine: data does not exist."
       }
-      let engine = CarPartV3.engineData[dataID]!
-      CarPartV3.totalEngineParts = CarPartV3.totalEngineParts + 1
-      self.id = CarPartV3.totalEngineParts
+      let engine = CarPart.engineData[dataID]!
+      CarPart.totalEngineParts = CarPart.totalEngineParts + 1
+      self.id = CarPart.totalEngineParts
       self.data = EngineData(dataID: dataID, name: engine.name, efficiency: engine.efficiency, hp: engine.hp, url: engine.url, type: engine.url)
     }
   }
@@ -71,11 +71,11 @@ pub contract CarPartV3 {
 
     init(dataID: UInt64) {
       pre {
-        CarPartV3.bodyData[dataID] != nil : "Could not create body: data does not exist."
+        CarPart.bodyData[dataID] != nil : "Could not create body: data does not exist."
       }
-      let body = CarPartV3.bodyData[dataID]!
-      CarPartV3.totalBodyParts = CarPartV3.totalBodyParts + 1
-      self.id = CarPartV3.totalBodyParts
+      let body = CarPart.bodyData[dataID]!
+      CarPart.totalBodyParts = CarPart.totalBodyParts + 1
+      self.id = CarPart.totalBodyParts
       self.data = BodyData(dataID: dataID, name: body.name, url: body.url, type: body.url)
     }
   }
@@ -101,11 +101,11 @@ pub contract CarPartV3 {
 
     init(dataID: UInt64) {
       pre {
-        CarPartV3.tyreData[dataID] != nil : "Could not create tyre: data does not exist."
+        CarPart.tyreData[dataID] != nil : "Could not create tyre: data does not exist."
       }
-      let tyre = CarPartV3.tyreData[dataID]!
-      CarPartV3.totalTyreParts = CarPartV3.totalTyreParts + 1
-      self.id = CarPartV3.totalTyreParts
+      let tyre = CarPart.tyreData[dataID]!
+      CarPart.totalTyreParts = CarPart.totalTyreParts + 1
+      self.id = CarPart.totalTyreParts
       self.data = TyreData(dataID: dataID, name: tyre.name, url: tyre.url, type: tyre.url)
     }
   }
@@ -235,9 +235,9 @@ pub contract CarPartV3 {
       pre {
         name.length > 0 : "Could not create engine data: name is required."
       }
-      let newEngineID = CarPartV3.nextEnginePartID
-      CarPartV3.engineData[newEngineID] = EngineData(dataID: newEngineID, name: name, efficiency: efficiency, hp: hp, url: url, type: type)
-      CarPartV3.nextEnginePartID = CarPartV3.nextEnginePartID + 1
+      let newEngineID = CarPart.nextEnginePartID
+      CarPart.engineData[newEngineID] = EngineData(dataID: newEngineID, name: name, efficiency: efficiency, hp: hp, url: url, type: type)
+      CarPart.nextEnginePartID = CarPart.nextEnginePartID + 1
       return newEngineID
     }
 
@@ -245,9 +245,9 @@ pub contract CarPartV3 {
       pre {
         name.length > 0 : "Could not create body data: name is required."
       }
-      let newBodyID = CarPartV3.nextBodyPartID
-      CarPartV3.bodyData[newBodyID] = BodyData(dataID: newBodyID, name: name, url: url, type: type)
-      CarPartV3.nextBodyPartID = CarPartV3.nextBodyPartID + 1
+      let newBodyID = CarPart.nextBodyPartID
+      CarPart.bodyData[newBodyID] = BodyData(dataID: newBodyID, name: name, url: url, type: type)
+      CarPart.nextBodyPartID = CarPart.nextBodyPartID + 1
       return newBodyID
     }
 
@@ -255,9 +255,9 @@ pub contract CarPartV3 {
       pre {
         name.length > 0 : "Could not create tyre data: name is required."
       }
-      let newTyreID = CarPartV3.nextTyrePartID
-      CarPartV3.tyreData[newTyreID] = TyreData(dataID: newTyreID, name: name, url: url, type: type)
-      CarPartV3.nextTyrePartID = CarPartV3.nextTyrePartID + 1
+      let newTyreID = CarPart.nextTyrePartID
+      CarPart.tyreData[newTyreID] = TyreData(dataID: newTyreID, name: name, url: url, type: type)
+      CarPart.nextTyrePartID = CarPart.nextTyrePartID + 1
       return newTyreID
     }
   }
@@ -305,9 +305,9 @@ pub contract CarPartV3 {
     self.nextEnginePartID = 1
     self.nextBodyPartID = 1
     self.nextTyrePartID = 1
-    self.CollectionStoragePath = /storage/CarPartV3Collection
-    self.CollectionPublicPath = /public/CarPartV3CollectionPublic
-    self.AdminStoragePath = /storage/CarPartV3Admin
+    self.CollectionStoragePath = /storage/CarPartCollection
+    self.CollectionPublicPath = /public/CarPartCollectionPublic
+    self.AdminStoragePath = /storage/CarPartAdmin
     self.account.save<@Admin>(<- create Admin(), to: self.AdminStoragePath)
   }
 }

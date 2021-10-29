@@ -1,21 +1,21 @@
-import CarPartV3 from 0x8b7cf187194b75df
+import CarPart from 0xe49c60ae5eb5e80c
 
 transaction(id1: UInt64, id2: UInt64, id3: UInt64) {
-  let receiverReference: &CarPartV3.Collection{CarPartV3.Receiver}
+  let receiverReference: &CarPart.Collection{CarPart.Receiver}
 
   prepare(acct: AuthAccount) {
-    self.receiverReference = acct.borrow<&CarPartV3.Collection>(from: CarPartV3.CollectionStoragePath)?? panic("Cannot borrow")
+    self.receiverReference = acct.borrow<&CarPart.Collection>(from: CarPart.CollectionStoragePath)?? panic("Cannot borrow")
 
   }
 
   execute {
-    let newEngine <- CarPartV3.mintEngine(dataID:id1)
+    let newEngine <- CarPart.mintEngine(dataID:id1)
     self.receiverReference.depositEngine(token: <-newEngine)
 
-    let newBody <- CarPartV3.mintBody(dataID:id2)
+    let newBody <- CarPart.mintBody(dataID:id2)
     self.receiverReference.depositBody(token: <-newBody)
 
-    let newTyre <- CarPartV3.mintTyre(dataID:id3)
+    let newTyre <- CarPart.mintTyre(dataID:id3)
     self.receiverReference.depositTyre(token: <-newTyre)
   }
 }
