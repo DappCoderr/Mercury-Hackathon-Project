@@ -1,6 +1,11 @@
 /* @flow */
 import { CREATE_CAR } from "../flow/create-car.script";
-import { mutate } from "@onflow/fcl";
+import {
+  GET_BODY,
+  GET_ENGINE,
+  GET_TYRE
+} from "../flow/get-user-collection.script";
+import { query, mutate } from "@onflow/fcl";
 
 import { addTransaction } from "./transactionReducer";
 
@@ -21,13 +26,9 @@ export const saveNewCar = (carID, configVal) => {
         let create_car_trans_ID = await mutate({
           cadence: CREATE_CAR,
           limit: 55,
-          args: (arg, t) => [
-            arg(pack[0].nfts[0].nft_id, t.UInt64),
-            arg(pack[0].nfts[1].nft_id, t.UInt64),
-            arg(pack[0].nfts[2].nft_id, t.UInt64)
-          ]
+          args: (arg, t) => [arg("sdd", t.UInt64)]
         });
-        await dispatch(addTransaction(stateUserId, pack_buy_trans_ID));
+        await dispatch(addTransaction(userID, create_car_trans_ID));
         const newCarRes = await fetch(`/v1/cars`, {
           method: "POST",
           headers: {
@@ -42,6 +43,32 @@ export const saveNewCar = (carID, configVal) => {
         const newCar = await newCarRes.json();
         console.log("Car In DB", newCar);
         return newCar;
+      }
+    } catch (e) {
+      console.error("Error", e);
+    }
+  };
+};
+
+export const getUserCollection = () => {
+  return async (dispatch, getState) => {
+    const userID = getState()?.Session?.user?.id ?? null;
+    try {
+      if (userID) {
+        let engine = await query({
+          cadence: GET_ENGINE
+        });
+        let tyre = await query({
+          cadence: GET_TYRE
+        });
+        let body = await query({
+          cadence: GET_TYRE
+        });
+        return {
+          engine,
+          tyre,
+          body
+        };
       }
     } catch (e) {
       console.error("Error", e);

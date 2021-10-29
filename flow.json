@@ -1,6 +1,6 @@
 {
   "contracts": {
-    "CarPartV1": "./cadence/contract/CarPartV1.cdc"
+    "CarPartV3": "./cadence/contract/CarPartV3.cdc"
   },
   "networks": {
     "mainnet": "access.mainnet.nodes.onflow.org:9000",
@@ -9,30 +9,20 @@
 
   "accounts": {
     "testnet-account": {
-      "address": "0x7896d69e23dd95a4",
+      "address": "0x8b7cf187194b75df",
       "key": {
         "type": "hex",
         "index": 0,
         "signatureAlgorithm": "ECDSA_P256",
         "hashAlgorithm": "SHA3_256",
-        "privateKey": "f96cdfa1ec1d28dfc5978fd26a134c06c524e9dc28cc68b09c4ac11c89860884"
-      }
-    },
-    "testnet-account2": {
-      "address": "0xac07e3a9cadab655",
-      "key": {
-        "type": "hex",
-        "index": 0,
-        "signatureAlgorithm": "ECDSA_P256",
-        "hashAlgorithm": "SHA3_256",
-        "privateKey": "7e23e5ef06dcb8cef80c36d58a0b52291f875c864b69382c2db0a13204643c8b"
+        "privateKey": "2193ef19886f1d9944b761263d28429116c5a99f6b7561d352f421098969517f"
       }
     }
   },
 
   "deployments": {
     "testnet": {
-      "testnet-account2": ["CarPartV1"]
+      "testnet-account": ["CarPartV3"]
     }
   }
 }

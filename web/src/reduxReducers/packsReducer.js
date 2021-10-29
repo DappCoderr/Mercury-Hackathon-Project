@@ -48,21 +48,25 @@ export const buyPack = packId => {
         let pack_buy_trans_ID = await mutate({
           cadence: BUY_PACK,
           limit: 55,
-          args: (arg, t) => [arg(pack[0].nfts[0].nft_id, t.UInt64)]
+          args: (arg, t) => [
+            arg(pack[0].nfts[0].nft_id, t.UInt64),
+            arg(pack[0].nfts[1].nft_id, t.UInt64),
+            arg(pack[0].nfts[2].nft_id, t.UInt64)
+          ]
         });
         await dispatch(addTransaction(stateUserId, pack_buy_trans_ID));
-        pack_buy_trans_ID = await mutate({
-          cadence: BUY_PACK,
-          limit: 55,
-          args: (arg, t) => [arg(pack[0].nfts[1].nft_id, t.UInt64)]
-        });
-        await dispatch(addTransaction(stateUserId, pack_buy_trans_ID));
-        pack_buy_trans_ID = await mutate({
-          cadence: BUY_PACK,
-          limit: 55,
-          args: (arg, t) => [arg(pack[0].nfts[2].nft_id, t.UInt64)]
-        });
-        await dispatch(addTransaction(stateUserId, pack_buy_trans_ID));
+        // pack_buy_trans_ID = await mutate({
+        //   cadence: BUY_PACK,
+        //   limit: 55,
+        //   args: (arg, t) => [arg(pack[0].nfts[1].nft_id, t.UInt64)]
+        // });
+        // await dispatch(addTransaction(stateUserId, pack_buy_trans_ID));
+        // pack_buy_trans_ID = await mutate({
+        //   cadence: BUY_PACK,
+        //   limit: 55,
+        //   args: (arg, t) => [arg(pack[0].nfts[2].nft_id, t.UInt64)]
+        // });
+        // await dispatch(addTransaction(stateUserId, pack_buy_trans_ID));
         const updatedPackRes = await fetch(`/v1/packs-buy`, {
           method: "PATCH",
           headers: {

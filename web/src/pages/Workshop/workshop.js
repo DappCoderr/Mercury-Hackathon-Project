@@ -9,7 +9,10 @@ import "./workshop.scss";
 import PartSectionCard from "../../component/Workshop/PartSection/partSection";
 
 /** Actions */
-import { saveNewCar } from "../../reduxReducers/workShopReducer";
+import {
+  saveNewCar,
+  getUserCollection
+} from "../../reduxReducers/workShopReducer";
 
 const carPartsAvailable = [
   { nft_id: "0xerrerer9", value: 13, type: "engine" },
@@ -36,9 +39,15 @@ const WorkShopPage = () => {
     setCarParts(pWColl);
   }, [setCarParts]);
 
+  const getTheUserCool = useCallback(async () => {
+    const cPs = await dispatch(getUserCollection());
+    setCarParts(cPs);
+  }, [dispatch]);
+
   useEffect(() => {
-    partWiseCollection();
-  }, [partWiseCollection]);
+    // partWiseCollection();
+    getTheUserCool();
+  }, [getTheUserCool]);
 
   const createCar = async () => {
     try {
