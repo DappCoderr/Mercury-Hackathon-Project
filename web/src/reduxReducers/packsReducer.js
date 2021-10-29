@@ -1,4 +1,9 @@
 /* @flow */
+import { BUY_PACK } from "../flow/buy-pack.script";
+
+import { mutate } from "@onflow/fcl";
+
+import { addTransaction } from "./transactionReducer";
 
 export const PACKS_DATA = Object.freeze({
   SET_PACKS_LIST: "SET_PACKS_LIST",
@@ -35,8 +40,29 @@ export const getPackList = () => {
 export const buyPack = packId => {
   return async (dispatch, getState) => {
     const stateUserAddr = getState()?.Session?.user?.addr ?? null;
+    const stateUserId = getState()?.Session?.user?.id ?? null;
+    const pack =
+      getState()?.PacksData?.pack_list ?? [].filter(pack => pack.id === packId);
     try {
-      if (stateUserAddr) {
+      if (stateUserAddr && pack[0]) {
+        let pack_buy_trans_ID = await mutate({
+          cadence: BUY_PACK,
+          limit: 55,
+          args: (arg, t) => [arg(pack[0].nfts[0].nft_id, t.UInt64)]
+        });
+        await dispatch(addTransaction(stateUserId, pack_buy_trans_ID));
+        pack_buy_trans_ID = await mutate({
+          cadence: BUY_PACK,
+          limit: 55,
+          args: (arg, t) => [arg(pack[0].nfts[1].nft_id, t.UInt64)]
+        });
+        await dispatch(addTransaction(stateUserId, pack_buy_trans_ID));
+        pack_buy_trans_ID = await mutate({
+          cadence: BUY_PACK,
+          limit: 55,
+          args: (arg, t) => [arg(pack[0].nfts[2].nft_id, t.UInt64)]
+        });
+        await dispatch(addTransaction(stateUserId, pack_buy_trans_ID));
         const updatedPackRes = await fetch(`/v1/packs-buy`, {
           method: "PATCH",
           headers: {

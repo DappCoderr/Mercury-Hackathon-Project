@@ -1,4 +1,8 @@
 /* @flow */
+import { CREATE_CAR } from "../flow/create-car.script";
+import { mutate } from "@onflow/fcl";
+
+import { addTransaction } from "./transactionReducer";
 
 export const WORKSHOP = Object.freeze({
   SELECT_PART: "SELECT_PART",
@@ -14,6 +18,16 @@ export const saveNewCar = (carID, configVal) => {
     const userID = getState()?.Session?.user?.id ?? null;
     try {
       if (userID) {
+        let create_car_trans_ID = await mutate({
+          cadence: CREATE_CAR,
+          limit: 55,
+          args: (arg, t) => [
+            arg(pack[0].nfts[0].nft_id, t.UInt64),
+            arg(pack[0].nfts[1].nft_id, t.UInt64),
+            arg(pack[0].nfts[2].nft_id, t.UInt64)
+          ]
+        });
+        await dispatch(addTransaction(stateUserId, pack_buy_trans_ID));
         const newCarRes = await fetch(`/v1/cars`, {
           method: "POST",
           headers: {
